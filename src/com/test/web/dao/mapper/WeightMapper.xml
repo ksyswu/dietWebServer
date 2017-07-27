@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.web.dao.WeightDao">
+
+	<!-- 그날그날 몸무게 입력 -->
+	<insert id="insertBoard" parameterType="weightBean">
+		INSERT INTO weight 
+			(
+				DATE, 
+				D_KG
+			) 
+		VALUES
+			(
+				#{date},
+				#{d_kg}
+				
+			)	
+	</insert>
+
+
+	<!-- 31일간 몸무게 상황 보여주기 -->
+	<select id="selectBoard"  resultType="weightBean" parameterType="weightBean">
+		SELECT
+			DATE AS date,
+			D_KG AS d_kg
+		FROM
+			weight
+		limit 31
+	</select>
+
+ 
+</mapper>
