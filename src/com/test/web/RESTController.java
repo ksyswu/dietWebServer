@@ -10,8 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.test.web.bean.DateBean;
 import com.test.web.bean.JoinBean;
-
+import com.test.web.bean.KgBean;
 import com.test.web.bean.WeightBean;
 import com.test.web.dao.JoinDao;
 import com.test.web.dao.WeightDao;
@@ -67,11 +68,6 @@ public class RESTController {
 		
 		return resMap;
 	}
-	
-	
-	
-	
-	/////수정하기!!!!!!!!!!!!!!!
 	
 	
 	//DB --> Bean ---> JSON
@@ -219,7 +215,7 @@ public class RESTController {
 		}
 		
 		
-		
+	/////수정하기!!!!!!!!!!!!!!!
 		
 		//DB --> Bean ---> JSON
 		@RequestMapping("/rest/selectBoardList")
@@ -229,7 +225,7 @@ public class RESTController {
 			Map<String, Object> resMap = new HashMap<String, Object>();
 			
 			try {
-				List<WeightBean> list = weightDao.selectBoardList();
+				List<KgBean> list = weightDao.selectBoardList();
 			
 				resMap.put("result", "ok");
 				resMap.put("selectBoardList", list);
@@ -252,7 +248,7 @@ public class RESTController {
 					Map<String, Object> resMap = new HashMap<String, Object>();
 					
 					try {
-						List<WeightBean> list = weightDao.dateList();
+						List<DateBean> list = weightDao.dateList();
 					
 						resMap.put("result", "ok");
 						resMap.put("dateList", list);

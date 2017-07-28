@@ -1,9 +1,11 @@
 package com.test.web.dao;
 
 
-import java.util.List;
+import java.util.ArrayList;
 
 
+import com.test.web.bean.DateBean;
+import com.test.web.bean.KgBean;
 import com.test.web.bean.WeightBean;
 
 public interface WeightDao {
@@ -18,8 +20,9 @@ public interface WeightDao {
 	public WeightBean selectBoard(WeightBean bean);
 	
 	/* 한달간의 날짜 출력 */
-	public List<WeightBean> dateList();
+	public ArrayList<DateBean> dateList();
 	
 	/* 한달간의 몸무게 출력 */
-	public List<WeightBean> selectBoardList();
+	public ArrayList<KgBean> selectBoardList();
+
 }

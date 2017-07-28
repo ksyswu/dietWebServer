@@ -31,9 +31,15 @@
 	<!--  아이디 중복 체크 -->
 	<select id="idCheckMember" resultType="joinBean" parameterType="joinBean">
 		SELECT
-			USER_ID AS userId
+			USER_ID AS userId,
+			count(*)
 		from tjoin
 		where USER_ID = #{userId}
+		
+		<!-- GROUP BY USER_ID
+		HAVING COUNT(*) > 0 -->
+	
+	
 	
 	</select>
 	
