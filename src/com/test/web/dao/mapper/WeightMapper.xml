@@ -17,16 +17,42 @@
 				
 			)	
 	</insert>
-
+	
+	<!-- 몸무게 삭제 -->
+	<delete id="deleteBoard" parameterType="weightBean">
+		DELETE FROM weight WHERE DATE = #{date}
+	</delete>
+	
 
 	<!-- 31일간 몸무게 상황 보여주기 -->
+	<select id="selectBoardList"  resultType="KgBean">
+		SELECT
+			D_KG AS d_kg
+		FROM
+			weight
+		limit 31
+	</select>
+	
+	
+	
+	<!-- 몸무게  -->
 	<select id="selectBoard"  resultType="weightBean" parameterType="weightBean">
 		SELECT
 			DATE AS date,
 			D_KG AS d_kg
 		FROM
 			weight
-		limit 31
+	
+	</select>
+	
+	
+	<!--31일간 날짜 -->
+	<select id="dateList" resultType="DateBean">
+		SELECT
+			DATE AS date
+		FROM
+			weight
+		limit 31 
 	</select>
 
  

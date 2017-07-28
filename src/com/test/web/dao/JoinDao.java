@@ -8,6 +8,8 @@ public interface JoinDao {
 
 	public JoinBean selectMember(JoinBean bean);
 	
+	public JoinBean idCheckMember(JoinBean bean);
+	
 	public List<JoinBean> selectMemberList();
 	
 	/** 회원가입 */

@@ -11,7 +11,7 @@
 			KG AS kg,
 			H_KG AS h_kg,
 			WORD AS word
-		from join 
+		from tjoin 
 		where USER_ID=#{userId}
 	</select>
 	
@@ -24,12 +24,23 @@
 			KG AS kg,
 			H_KG AS h_kg,
 			WORD AS word
-		from join 
+		from tjoin 
 	</select>
+	
+	
+	<!--  아이디 중복 체크 -->
+	<select id="idCheckMember" resultType="joinBean" parameterType="joinBean">
+		SELECT
+			USER_ID AS userId
+		from tjoin
+		where USER_ID = #{userId}
+	
+	</select>
+	
 	
 	<!-- 회원가입 -->
 	<insert id="insertMember" parameterType="joinBean">
-		INSERT INTO join 
+		INSERT INTO tjoin 
 			(
 				USER_ID, 
 				USER_PW, 
@@ -51,7 +62,7 @@
 	
 	<!-- 회원수정 -->
 	<update id="updateMember" parameterType="joinBean">
-		UPDATE join
+		UPDATE tjoin
 	 	SET
 	 		<if test="userPw != null">
 	 		USER_PW = #{userPw}
@@ -75,7 +86,7 @@
 	
 	<!-- 회원삭제 -->
 	<delete id="deleteMember" parameterType="joinBean">
-		DELETE FROM join WHERE USER_ID = #{userId}
+		DELETE FROM tjoin WHERE USER_ID = #{userId}
 	</delete>
 	
 	<!-- 로그인  -->
@@ -87,12 +98,12 @@
 			KG AS kg,
 			H_KG AS h_kg,
 			WORD AS word
-		from join 
+		from tjoin 
 		WHERE
 			USER_ID=#{userId} AND
 			USER_PW=#{userPw}
 			
-	</select>
+	</select>	
 	
 	
  

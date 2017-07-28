@@ -9,7 +9,6 @@ public class JoinBean {
 	private String h_kg;
 	private String word;
 	
-	
 	public String getUserId() {
 		return userId;
 	}
@@ -46,4 +45,6 @@ public class JoinBean {
 	public void setWord(String word) {
 		this.word = word;
 	}
+	
+	
 }

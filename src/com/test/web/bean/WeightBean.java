@@ -1,7 +1,7 @@
 package com.test.web.bean;
 
 public class WeightBean {
-
+	
 	private String date;
 	private String d_kg;
 	
