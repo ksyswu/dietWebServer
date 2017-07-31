@@ -107,7 +107,7 @@ public class RESTController {
 		
 		try {
 			
-			if(mBean.getUserId() == null || mBean.getUserId().length() ==0 ) {
+			if(mBean.getUserId() == null || mBean.getUserId().length() ==0 || mBean.getUserPw() == null || mBean.getUserPw().length() ==0) {
 				
 				resMap.put("resultMsg", "아이디와 비밀번호를 입력하세요");
 			}
@@ -270,15 +270,17 @@ public class RESTController {
 		public Map<String, Object> insertBoard(WeightBean mBean){
 
 			Map<String, Object> resMap = new HashMap<String, Object>();
+			resMap.put("result", "fail");
 
 			try {
 				int resVal = weightDao.insertBoard(mBean);
 				if(resVal > 0) {
 					resMap.put("result",  "ok");
+					resMap.put("resultMsg",  "몸무게를 추가하였습니다");
 				}
 			}catch(DuplicateKeyException dke) {
-				resMap.put("result", "fail");
-				resMap.put("resultMsg",  "이미존재하는  날짜입니다");
+//				resMap.put("result", "fail");
+				resMap.put("resultMsg",  "오늘의 몸무게를 입력했습니다");
 			}
 			catch(Exception e) {
 				e.printStackTrace();
