@@ -30,7 +30,7 @@
 			D_KG AS d_kg
 		FROM
 			weight
-		order by D_KG desc
+		<!-- order by D_KG desc -->
 		limit 31
 	</select>
 	
@@ -41,7 +41,7 @@
 			DATE AS date
 		FROM
 			weight
-		order by DATE desc
+		<!-- order by DATE desc -->
 		limit 31
 	</select>
 	

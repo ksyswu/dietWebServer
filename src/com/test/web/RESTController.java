@@ -110,6 +110,7 @@ public class RESTController {
 			if(mBean.getUserId() == null || mBean.getUserId().length() ==0 || mBean.getUserPw() == null || mBean.getUserPw().length() ==0) {
 				
 				resMap.put("resultMsg", "아이디와 비밀번호를 입력하세요");
+				return resMap;
 			}
 			
 			int resVal = joinDao.insertMember(mBean);
@@ -215,8 +216,6 @@ public class RESTController {
 		}
 		
 		
-	/////수정하기!!!!!!!!!!!!!!!
-		
 		//DB --> Bean ---> JSON
 		@RequestMapping("/rest/selectBoardList")
 		@ResponseBody
@@ -273,6 +272,13 @@ public class RESTController {
 			resMap.put("result", "fail");
 
 			try {
+				
+				if(mBean.getD_kg() == null || mBean.getD_kg().length() ==0) {
+					
+					resMap.put("resultMsg", "몸무게를 입력해주세요");
+					return resMap;
+				}
+				
 				int resVal = weightDao.insertBoard(mBean);
 				if(resVal > 0) {
 					resMap.put("result",  "ok");
@@ -280,7 +286,7 @@ public class RESTController {
 				}
 			}catch(DuplicateKeyException dke) {
 //				resMap.put("result", "fail");
-				resMap.put("resultMsg",  "오늘의 몸무게를 입력했습니다");
+				resMap.put("resultMsg",  "이미 오늘의 몸무게를 입력했습니다");
 			}
 			catch(Exception e) {
 				e.printStackTrace();
