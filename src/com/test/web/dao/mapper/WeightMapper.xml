@@ -25,7 +25,7 @@
 	
 
 	<!-- 31일간 몸무게 상황 보여주기 limit수정 필요-->
-	<select id="selectBoardList"  resultType="dateBean">
+	<select id="selectBoardList"  resultType="kgBean" parameterType="kgBean">
 		SELECT
 			D_KG AS d_kg
 		FROM
@@ -35,7 +35,7 @@
 	
 	
 	<!-- 31일간 날짜 상황 보여주기  limit수정 필요 -->
-	<select id="dateList"  resultType="kgBean">
+	<select id="dateList"  resultType="dateBean" parameterType="dateBean">
 		SELECT
 			DATE AS date
 		FROM
