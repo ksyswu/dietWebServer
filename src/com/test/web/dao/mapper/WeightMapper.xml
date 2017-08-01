@@ -7,52 +7,61 @@
 	<insert id="insertBoard" parameterType="weightBean">
 		INSERT INTO weight 
 			(
+				USER_ID,
 				DATE, 
 				D_KG
 			) 
 		VALUES
 			(
+				#{userId},
 				#{date},
 				#{d_kg}
 				
-			)	
+			)
+			
 	</insert>
 	
 	<!-- 몸무게 삭제 -->
 	<delete id="deleteBoard" parameterType="weightBean">
-		DELETE FROM weight WHERE DATE = #{date}
+		DELETE FROM weight WHERE DATE = #{date} And USER_ID=#{userId}
 	</delete>
 	
 
 	<!-- 31일간 몸무게 상황 보여주기 limit수정 필요-->
 	<select id="selectBoardList"  resultType="kgBean" parameterType="kgBean">
 		SELECT
+			USER_ID AS userId,
 			D_KG AS d_kg
 		FROM
 			weight
-		<!-- order by D_KG desc -->
-		limit 31
+		 where USER_ID=#{userId}
+		<!-- order by D_KG desc limit 31 -->
+		
 	</select>
 	
 	
 	<!-- 31일간 날짜 상황 보여주기  limit수정 필요 -->
 	<select id="dateList"  resultType="dateBean" parameterType="dateBean">
 		SELECT
+			USER_ID AS userId,
 			DATE AS date
 		FROM
 			weight
-		<!-- order by DATE desc -->
-		limit 31
+		where USER_ID=#{userId}
+		<!-- order by DATE desc limit 31 -->
+		
 	</select>
 	
 	
 	<!-- 몸무게  -->
 	<select id="selectBoard"  resultType="weightBean" parameterType="weightBean">
 		SELECT
+			USER_ID AS userId,
 			DATE AS date,
 			D_KG AS d_kg
 		FROM
 			weight
+		where USER_ID=#{userId}
 	
 	</select>
 	

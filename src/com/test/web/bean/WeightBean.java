@@ -2,10 +2,17 @@ package com.test.web.bean;
 
 public class WeightBean {
 	
+	private String userId;
 	private String date;
 	private String d_kg;
 	
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getDate() {
 		return date;
 	}

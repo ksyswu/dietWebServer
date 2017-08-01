@@ -78,6 +78,10 @@ public class RESTController {
 			Map<String, Object> resMap = new HashMap<String, Object>();
 			
 			try {
+				if(mBean.getUserId() == null || mBean.getUserId().length() ==0) {
+					resMap.put("resultMsg", "아이디를 입력하세요");
+					return resMap;
+				}
 				JoinBean resBean = joinDao.idCheckMember(mBean);
 				
 				if( resBean != null) {
@@ -215,16 +219,40 @@ public class RESTController {
 			return resMap;
 		}
 		
-		
+	
+	
+//	//DB --> Bean ---> JSON
+//			@RequestMapping("/rest/selectBoard")
+//			@ResponseBody
+//			public Map<String, Object> selectBoard(WeightBean mBean) {
+//				
+//				Map<String, Object> resMap = new HashMap<String, Object>();
+//				
+//				try {
+//					List<WeightBean> list = weightDao.selectBoard(mBean);
+//				
+//					resMap.put("result", "ok");
+//					resMap.put("selectBoard", list);
+//					
+//				} catch(Exception e) {
+//					e.printStackTrace();
+//					resMap.put("result", "fail");
+//				}
+//				
+//				return resMap;
+//			}
+//	
+	
+	
 		//DB --> Bean ---> JSON
 		@RequestMapping("/rest/selectBoardList")
 		@ResponseBody
-		public Map<String, Object> selectBoardList() {
+		public Map<String, Object> selectBoardList(WeightBean mBean) {
 			
 			Map<String, Object> resMap = new HashMap<String, Object>();
 			
 			try {
-				List<KgBean> list = weightDao.selectBoardList();
+				List<KgBean> list = weightDao.selectBoardList(mBean);
 			
 				resMap.put("result", "ok");
 				resMap.put("selectBoardList", list);
@@ -242,12 +270,12 @@ public class RESTController {
 		//DB --> Bean ---> JSON
 				@RequestMapping("/rest/dateList")
 				@ResponseBody
-				public Map<String, Object> dateList() {
+				public Map<String, Object> dateList(WeightBean mBean) {
 					
 					Map<String, Object> resMap = new HashMap<String, Object>();
 					
 					try {
-						List<DateBean> list = weightDao.dateList();
+						List<DateBean> list = weightDao.dateList(mBean);
 					
 						resMap.put("result", "ok");
 						resMap.put("dateList", list);

@@ -19,10 +19,14 @@ public interface WeightDao {
 	/* 날짜 몸무게 출력 */
 	public WeightBean selectBoard(WeightBean bean);
 	
+	
+//	/* 날짜 몸무게 한달간 출력 */
+//	public ArrayList<WeightBean> selectBoard(WeightBean bean);
+	
 	/* 한달간의 날짜 출력 */
-	public ArrayList<DateBean> dateList();
+	public ArrayList<DateBean> dateList(WeightBean bean);
 	
 	/* 한달간의 몸무게 출력 */
-	public ArrayList<KgBean> selectBoardList();
+	public ArrayList<KgBean> selectBoardList(WeightBean bean);
 
 }
